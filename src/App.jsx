@@ -1,7 +1,6 @@
 import "./App.css";
 import { useState } from "react";
-import ZombieFightersData from "./components/zombieFightersData.js";
-
+import ZombieFightersData from "./data/zombieFightersData";
 const teamStats = {
   teamStrength: 0,
   teamAgility: 0,
