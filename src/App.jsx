@@ -72,7 +72,7 @@ const App = () => {
           "Your team is empty, the zombies will fight over your brain. Quick get some friends to help fight the hord!"
         ) : (
           <ul>
-            {team.map((member) => {
+            {team.map((member) => (
               <li key={member._id}>
                 <span>Name: {member.name}</span>
                 <span>Price: {member.price}</span>
@@ -86,8 +86,8 @@ const App = () => {
                     Remove member from team
                   </button>
                 </span>
-              </li>;
-            })}
+              </li>
+            ))}
           </ul>
         )}
       </section>
@@ -97,7 +97,7 @@ const App = () => {
           "There are no zombie fighters available to hire...Watch your back, the zombies must be winning."
         ) : (
           <ul>
-            {zombieFighters.map((fighter) => {
+            {zombieFighters.map((fighter) => (
               <li key={fighter._id}>
                 <span>Name: {fighter.name}</span>
                 <span>Price: {fighter.price}</span>
@@ -111,8 +111,8 @@ const App = () => {
                     Add fighter to team
                   </button>
                 </span>
-              </li>;
-            })}
+              </li>
+            ))}
           </ul>
         )}
       </section>
