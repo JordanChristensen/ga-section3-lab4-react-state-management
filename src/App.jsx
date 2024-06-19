@@ -43,9 +43,6 @@ const App = () => {
     setZombieFighters([...zombieFighters, memberToRemove]);
   };
 
-  // console.log(team);
-  // console.log("zombieFighters",zombieFighters);
-
   return (
     <main>
       <h1>Zombie Nation!</h1>
@@ -62,7 +59,7 @@ const App = () => {
           </tr>
           <tr>
             <th>Money available: </th>
-            <td>${money}</td>
+            <td>&#36; {money}</td>
           </tr>
         </tbody>
       </table>
@@ -74,43 +71,35 @@ const App = () => {
           <ul>
             {team.map((member) => (
               <li key={member._id}>
-                <span>Name: {member.name}</span>
-                <span>Price: {member.price}</span>
-                <span>Strength: {member.strength}</span>
-                <span>Agility: {member.agility}</span>
-                <span>
-                  <img src={member.img} alt={member.name} />
-                </span>
-                <span>
-                  <button onClick={() => handleRemoveTeamMember(member)}>
-                    Remove member from team
-                  </button>
-                </span>
+                <img src={member.img} alt={member.name} /> <br />
+                {member.name} <br />
+                &#36; {member.price} <br />
+                Strength: {member.strength} <br />
+                Agility: {member.agility} <br />
+                <button onClick={() => handleRemoveTeamMember(member)}>
+                  Remove
+                </button>
               </li>
             ))}
           </ul>
         )}
       </section>
       <section>
-        <h3>List of zombie fighters available to hire</h3>
+        <h3>Zombie fighters available to hire</h3>
         {zombieFighters.length === 0 ? (
           "There are no zombie fighters available to hire...Watch your back, the zombies must be winning."
         ) : (
           <ul>
             {zombieFighters.map((fighter) => (
               <li key={fighter._id}>
-                <span>Name: {fighter.name}</span>
-                <span>Price: {fighter.price}</span>
-                <span>Strength: {fighter.strength}</span>
-                <span>Agility: {fighter.agility}</span>
-                <span>
-                  <img src={fighter.img} alt={fighter.name} />
-                </span>
-                <span>
-                  <button onClick={() => handleAddTeamMember(fighter)}>
-                    Add fighter to team
-                  </button>
-                </span>
+                <img src={fighter.img} alt={fighter.name} /> <br />
+                {fighter.name} <br />
+                &#36; {fighter.price} <br />
+                Strength: {fighter.strength} <br />
+                Agility: {fighter.agility} <br />
+                <button onClick={() => handleAddTeamMember(fighter)}>
+                  Add
+                </button>
               </li>
             ))}
           </ul>
