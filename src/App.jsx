@@ -4,6 +4,7 @@ import { addTeamMember, removeTeamMember } from "./utils/zombieTeam";
 import ZombieFightersData from "./data/zombieFightersData";
 import ZombieTeamStats from "./components/zombieTeamStats";
 import ZombieTeam from "./components/ZombieTeam";
+import FighterPool from "./components/FighterPool";
 const teamStats = {
   teamStrength: 0,
   teamAgility: 0,
@@ -52,27 +53,10 @@ const App = () => {
       <h2>Join us in Fighting the Undead!!</h2>
       <ZombieTeamStats combinedStats={combinedStats} money={money} />
       <ZombieTeam team={team} handleRemoveTeamMember={handleRemoveTeamMember} />
-      <section>
-        <h3>Zombie fighters available to hire</h3>
-        {zombieFighters.length === 0 ? (
-          "There are no zombie fighters available to hire...Watch your back, the zombies must be winning."
-        ) : (
-          <ul>
-            {zombieFighters.map((fighter) => (
-              <li key={fighter._id}>
-                <img src={fighter.img} alt={fighter.name} /> <br />
-                {fighter.name} <br />
-                &#36; {fighter.price} <br />
-                Strength: {fighter.strength} <br />
-                Agility: {fighter.agility} <br />
-                <button onClick={() => handleAddTeamMember(fighter)}>
-                  Add
-                </button>
-              </li>
-            ))}
-          </ul>
-        )}
-      </section>
+      <FighterPool
+        zombieFighters={zombieFighters}
+        handleAddTeamMember={handleAddTeamMember}
+      />
     </main>
   );
 };
