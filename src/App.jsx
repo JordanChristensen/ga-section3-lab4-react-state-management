@@ -1,4 +1,5 @@
 import "./App.css";
+import { addTeamMember, removeTeamMember } from "./utils/zombieTeam";
 import { useState } from "react";
 import ZombieFightersData from "./data/zombieFightersData";
 const teamStats = {
@@ -12,18 +13,17 @@ const App = () => {
   const [zombieFighters, setZombieFighters] = useState(ZombieFightersData);
   const [combinedStats, setCombinedStats] = useState(teamStats);
 
-  const handleAddTeamMember = (newFighter) => {
-    if (money >= newFighter.price) {
-      setTeam([...team, newFighter]);
-      setMoney((prevMoney) => prevMoney - newFighter.price);
-      setCombinedStats((prevStats) => ({
-        teamStrength: prevStats.teamStrength + newFighter.strength,
-        teamAgility: prevStats.teamAgility + newFighter.agility,
-      }));
-      const updateAvailableFighters = zombieFighters.filter(
-        (recentlyAddedFighter) => newFighter.name !== recentlyAddedFighter.name
+  const handleAddTeamMember = (memberToAdd) => {
+    if (money >= memberToAdd.price) {
+      addTeamMember(
+        memberToAdd,
+        team,
+        setTeam,
+        setMoney,
+        setCombinedStats,
+        zombieFighters,
+        setZombieFighters
       );
-      setZombieFighters(updateAvailableFighters);
     } else {
       console.log(
         "You don't have enough money to hire this fighter onto your team!"
@@ -31,16 +31,16 @@ const App = () => {
     }
   };
   const handleRemoveTeamMember = (memberToRemove) => {
-    const updateTeam = team.filter(
-      (member) => member._id !== memberToRemove._id
+    removeTeamMember(
+      memberToRemove,
+      team,
+      setTeam,
+      money,
+      setMoney,
+      setCombinedStats,
+      zombieFighters,
+      setZombieFighters
     );
-    setTeam(updateTeam);
-    setMoney(money + memberToRemove.price);
-    setCombinedStats((prevStats) => ({
-      teamStrength: prevStats.teamStrength - memberToRemove.strength,
-      teamAgility: prevStats.teamAgility - memberToRemove.agility,
-    }));
-    setZombieFighters([...zombieFighters, memberToRemove]);
   };
 
   return (
