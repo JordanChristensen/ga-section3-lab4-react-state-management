@@ -1,7 +1,9 @@
 import "./App.css";
-import { addTeamMember, removeTeamMember } from "./utils/zombieTeam";
 import { useState } from "react";
+import { addTeamMember, removeTeamMember } from "./utils/zombieTeam";
 import ZombieFightersData from "./data/zombieFightersData";
+import ZombieTeamStats from "./components/zombieTeamStats";
+import ZombieTeam from "./components/ZombieTeam";
 const teamStats = {
   teamStrength: 0,
   teamAgility: 0,
@@ -30,6 +32,7 @@ const App = () => {
       );
     }
   };
+
   const handleRemoveTeamMember = (memberToRemove) => {
     removeTeamMember(
       memberToRemove,
@@ -47,43 +50,8 @@ const App = () => {
     <main>
       <h1>Zombie Nation!</h1>
       <h2>Join us in Fighting the Undead!!</h2>
-      <table>
-        <tbody>
-          <tr>
-            <th>Team Strength:</th>
-            <td>{combinedStats.teamStrength}</td>
-          </tr>
-          <tr>
-            <th>Team Agility:</th>
-            <td>{combinedStats.teamAgility}</td>
-          </tr>
-          <tr>
-            <th>Money available: </th>
-            <td>&#36; {money}</td>
-          </tr>
-        </tbody>
-      </table>
-      <section>
-        <h3>My team of zombie fighters</h3>
-        {team.length === 0 ? (
-          "Your team is empty, the zombies will fight over your brain. Quick get some friends to help fight the hord!"
-        ) : (
-          <ul>
-            {team.map((member) => (
-              <li key={member._id}>
-                <img src={member.img} alt={member.name} /> <br />
-                {member.name} <br />
-                &#36; {member.price} <br />
-                Strength: {member.strength} <br />
-                Agility: {member.agility} <br />
-                <button onClick={() => handleRemoveTeamMember(member)}>
-                  Remove
-                </button>
-              </li>
-            ))}
-          </ul>
-        )}
-      </section>
+      <ZombieTeamStats combinedStats={combinedStats} money={money} />
+      <ZombieTeam team={team} handleRemoveTeamMember={handleRemoveTeamMember} />
       <section>
         <h3>Zombie fighters available to hire</h3>
         {zombieFighters.length === 0 ? (
