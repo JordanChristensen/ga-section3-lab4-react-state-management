@@ -1,3 +1,5 @@
+import Fighter from "./Fighter";
+
 const FighterPool = ({ zombieFighters, handleAddTeamMember }) => {
   return (
     <section>
@@ -8,12 +10,10 @@ const FighterPool = ({ zombieFighters, handleAddTeamMember }) => {
         <ul>
           {zombieFighters.map((fighter) => (
             <li key={fighter._id}>
-              <img src={fighter.img} alt={fighter.name} /> <br />
-              {fighter.name} <br />
-              &#36; {fighter.price} <br />
-              Strength: {fighter.strength} <br />
-              Agility: {fighter.agility} <br />
-              <button onClick={() => handleAddTeamMember(fighter)}>Add</button>
+              <Fighter
+                fighter={fighter}
+                handleAddTeamMember={handleAddTeamMember}
+              />
             </li>
           ))}
         </ul>
