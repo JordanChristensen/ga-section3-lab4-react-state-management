@@ -1,5 +1,6 @@
 const ZombieFightersData = [
   {
+    _id: 0,
     name: "Survivor",
     price: 12,
     strength: 6,
@@ -7,6 +8,7 @@ const ZombieFightersData = [
     img: "https://via.placeholder.com/150/92c952",
   },
   {
+    _id: 1,
     name: "Scavenger",
     price: 10,
     strength: 5,
@@ -14,6 +16,7 @@ const ZombieFightersData = [
     img: "https://via.placeholder.com/150/771796",
   },
   {
+    _id: 2,
     name: "Shadow",
     price: 18,
     strength: 7,
@@ -21,6 +24,7 @@ const ZombieFightersData = [
     img: "https://via.placeholder.com/150/24f355",
   },
   {
+    _id: 3,
     name: "Tracker",
     price: 14,
     strength: 7,
@@ -28,6 +32,7 @@ const ZombieFightersData = [
     img: "https://via.placeholder.com/150/d32776",
   },
   {
+    _id: 4,
     name: "Sharpshooter",
     price: 20,
     strength: 6,
@@ -35,6 +40,7 @@ const ZombieFightersData = [
     img: "https://via.placeholder.com/150/1ee8a4",
   },
   {
+    _id: 5,
     name: "Medic",
     price: 15,
     strength: 5,
@@ -42,6 +48,7 @@ const ZombieFightersData = [
     img: "https://via.placeholder.com/150/66b7d2",
   },
   {
+    _id: 6,
     name: "Engineer",
     price: 16,
     strength: 6,
@@ -49,6 +56,7 @@ const ZombieFightersData = [
     img: "https://via.placeholder.com/150/56acb2",
   },
   {
+    _id: 7,
     name: "Brawler",
     price: 11,
     strength: 8,
@@ -56,6 +64,7 @@ const ZombieFightersData = [
     img: "https://via.placeholder.com/150/8985dc",
   },
   {
+    _id: 8,
     name: "Infiltrator",
     price: 17,
     strength: 5,
@@ -63,6 +72,7 @@ const ZombieFightersData = [
     img: "https://via.placeholder.com/150/392537",
   },
   {
+    _id: 9,
     name: "Leader",
     price: 22,
     strength: 7,
