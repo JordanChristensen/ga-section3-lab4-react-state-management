@@ -2,8 +2,8 @@ import "./App.css";
 import { useState } from "react";
 import { addTeamMember, removeTeamMember } from "./utils/manageZombieTeam";
 import ZombieFightersData from "./data/ZombieFightersData";
-import ZombieTeamStats from "./components/ZombieTeamStats";
-import ZombieTeam from "./components/ZombieTeam";
+import TeamStats from "./components/TeamStats";
+import Team from "./components/Team";
 import FighterPool from "./components/FighterPool";
 const teamStats = {
   teamStrength: 0,
@@ -51,8 +51,8 @@ const App = () => {
     <main>
       <h1>Zombie Nation!</h1>
       <h2>Join us in Fighting the Undead!!</h2>
-      <ZombieTeamStats combinedStats={combinedStats} money={money} />
-      <ZombieTeam team={team} handleRemoveTeamMember={handleRemoveTeamMember} />
+      <TeamStats combinedStats={combinedStats} money={money} />
+      <Team team={team} handleRemoveTeamMember={handleRemoveTeamMember} />
       <FighterPool
         zombieFighters={zombieFighters}
         handleAddTeamMember={handleAddTeamMember}
