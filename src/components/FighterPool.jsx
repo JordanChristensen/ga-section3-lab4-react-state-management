@@ -9,12 +9,11 @@ const FighterPool = ({ zombieFighters, handleAddTeamMember }) => {
       ) : (
         <ul>
           {zombieFighters.map((fighter) => (
-            <li key={fighter._id}>
-              <Fighter
-                fighter={fighter}
-                handleAddTeamMember={handleAddTeamMember}
-              />
-            </li>
+            <Fighter
+              key={fighter._id}
+              fighter={fighter}
+              handleAddTeamMember={handleAddTeamMember}
+            />
           ))}
         </ul>
       )}

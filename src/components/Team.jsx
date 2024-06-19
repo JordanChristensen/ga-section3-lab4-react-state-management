@@ -9,12 +9,11 @@ const Team = ({ team, handleRemoveTeamMember }) => {
       ) : (
         <ul>
           {team.map((member) => (
-            <li key={member._id}>
-              <TeamMember
-                member={member}
-                handleRemoveTeamMember={handleRemoveTeamMember}
-              />
-            </li>
+            <TeamMember
+              key={member._id}
+              member={member}
+              handleRemoveTeamMember={handleRemoveTeamMember}
+            />
           ))}
         </ul>
       )}
