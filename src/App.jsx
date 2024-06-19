@@ -1,8 +1,8 @@
 import "./App.css";
 import { useState } from "react";
-import { addTeamMember, removeTeamMember } from "./utils/zombieTeam";
-import ZombieFightersData from "./data/zombieFightersData";
-import ZombieTeamStats from "./components/zombieTeamStats";
+import { addTeamMember, removeTeamMember } from "./utils/manageZombieTeam";
+import ZombieFightersData from "./data/ZombieFightersData";
+import ZombieTeamStats from "./components/ZombieTeamStats";
 import ZombieTeam from "./components/ZombieTeam";
 import FighterPool from "./components/FighterPool";
 const teamStats = {
