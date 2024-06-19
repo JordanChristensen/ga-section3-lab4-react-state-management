@@ -13,7 +13,7 @@ const App = () => {
   const [zombieFighters, setZombieFighters] = useState(ZombieFightersData);
   const [combinedStats, setCombinedStats] = useState(teamStats);
 
-  const handleAddFighterToTeam = (newFighter) => {
+  const handleAddTeamMember = (newFighter) => {
     if (money >= newFighter.price) {
       setTeam([...team, newFighter]);
       setMoney((prevMoney) => prevMoney - newFighter.price);
@@ -31,6 +31,22 @@ const App = () => {
       );
     }
   };
+  const handleRemoveTeamMember = (memberToRemove) => {
+    const updateTeam = team.filter(
+      (member) => member._id !== memberToRemove._id
+    );
+    setTeam(updateTeam);
+    setMoney(money + memberToRemove.price);
+    setCombinedStats((prevStats) => ({
+      teamStrength: prevStats.teamStrength - memberToRemove.strength,
+      teamAgility: prevStats.teamAgility - memberToRemove.agility,
+    }));
+    setZombieFighters([...zombieFighters, memberToRemove]);
+  };
+
+  // console.log(team);
+  // console.log("zombieFighters",zombieFighters);
+
   return (
     <main>
       <h1>Zombie Nation!</h1>
@@ -51,6 +67,56 @@ const App = () => {
           </tr>
         </tbody>
       </table>
+      <section>
+        <h3>My team of zombie fighters</h3>
+        {team.length === 0 ? (
+          "Your team is empty, the zombies will fight over your brain. Quick get some friends to help fight the hord!"
+        ) : (
+          <ul>
+            {team.map((member) => {
+              <li key={member._id}>
+                <span>Name: {member.name}</span>
+                <span>Price: {member.price}</span>
+                <span>Strength: {member.strength}</span>
+                <span>Agility: {member.agility}</span>
+                <span>
+                  <img src={member.img} alt={member.name} />
+                </span>
+                <span>
+                  <button onClick={() => handleRemoveTeamMember(member)}>
+                    Remove member from team
+                  </button>
+                </span>
+              </li>;
+            })}
+          </ul>
+        )}
+      </section>
+      <section>
+        <h3>List of zombie fighters available to hire</h3>
+        {zombieFighters.length === 0 ? (
+          "There are no zombie fighters available to hire...Watch your back, the zombies must be winning."
+        ) : (
+          <ul>
+            {zombieFighters.map((fighter) => {
+              <li key={fighter._id}>
+                <span>Name: {fighter.name}</span>
+                <span>Price: {fighter.price}</span>
+                <span>Strength: {fighter.strength}</span>
+                <span>Agility: {fighter.agility}</span>
+                <span>
+                  <img src={fighter.img} alt={fighter.name} />
+                </span>
+                <span>
+                  <button onClick={() => handleAddTeamMember(fighter)}>
+                    Add fighter to team
+                  </button>
+                </span>
+              </li>;
+            })}
+          </ul>
+        )}
+      </section>
     </main>
   );
 };
