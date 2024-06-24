@@ -1,6 +1,4 @@
-import Fighter from "./Fighter";
-
-const FighterPool = ({ zombieFighters, handleAddTeamMember }) => {
+export default function FighterPool({ zombieFighters, addTeamMember }) {
   return (
     <section>
       <h3>Zombie fighters available to hire</h3>
@@ -9,16 +7,17 @@ const FighterPool = ({ zombieFighters, handleAddTeamMember }) => {
       ) : (
         <ul>
           {zombieFighters.map((fighter) => (
-            <Fighter
-              key={fighter._id}
-              fighter={fighter}
-              handleAddTeamMember={handleAddTeamMember}
-            />
+            <li key={fighter._id}>
+              <img src={fighter.img} alt={fighter.name} /> <br />
+              {fighter.name} <br />
+              &#36; {fighter.price} <br />
+              Strength: {fighter.strength} <br />
+              Agility: {fighter.agility} <br />
+              <button onClick={() => addTeamMember(fighter)}>Add</button>
+            </li>
           ))}
         </ul>
       )}
     </section>
   );
-};
-
-export default FighterPool;
+}

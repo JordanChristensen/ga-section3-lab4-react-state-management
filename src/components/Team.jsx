@@ -1,6 +1,4 @@
-import TeamMember from "./TeamMember";
-
-const Team = ({ team, handleRemoveTeamMember }) => {
+export default function Team({ team, removeTeamMember }) {
   return (
     <section>
       <h3>My team of zombie fighters</h3>
@@ -9,16 +7,17 @@ const Team = ({ team, handleRemoveTeamMember }) => {
       ) : (
         <ul>
           {team.map((member) => (
-            <TeamMember
-              key={member._id}
-              member={member}
-              handleRemoveTeamMember={handleRemoveTeamMember}
-            />
+            <li key={member._id}>
+              <img src={member.img} alt={member.name} /> <br />
+              {member.name} <br />
+              &#36; {member.price} <br />
+              Strength: {member.strength} <br />
+              Agility: {member.agility} <br />
+              <button onClick={() => removeTeamMember(member)}>Remove</button>
+            </li>
           ))}
         </ul>
       )}
     </section>
   );
-};
-
-export default Team;
+}
